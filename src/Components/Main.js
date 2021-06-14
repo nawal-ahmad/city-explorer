@@ -16,9 +16,9 @@ export default class Main extends Component {
 
   updateLocation = (e) => {
     console.log(e.target.value);
-    this.setState = {
+    this.setState({
       location: e.target.value,
-    };
+    });
   };
 
   getLocation = async (e) => {
@@ -28,10 +28,10 @@ export default class Main extends Component {
       `https://us1.locationiq.com/v1/search.php?key=pk.917c9eb60dbcf09cef8b2b16db9e9931&city=${this.state.location}&format=json`
     );
 
-    this.setState = {
+    this.setState({
       data: reqData.data[0],
       display: true,
-    };
+    });
   };
 
   render() {
@@ -59,10 +59,12 @@ export default class Main extends Component {
                 {this.state.data.display_name}, {this.state.data.lon},{' '}
                 {this.state.data.lat}
               </h3>
-              <img
-                src={`https://maps.locationiq.com/v3/staticmap?key=pk.917c9eb60dbcf09cef8b2b16db9e9931&q&center=${this.state.data.lat},${this.state.data.lon}&zoom=15`}
-                alt=''
-              />
+              <div className={'map'}>
+                <img
+                  src={`https://maps.locationiq.com/v3/staticmap?key=pk.917c9eb60dbcf09cef8b2b16db9e9931&q&center=${this.state.data.lat},${this.state.data.lon}&zoom=15`}
+                  alt=''
+                />
+              </div>
             </div>
           )}
         </div>
