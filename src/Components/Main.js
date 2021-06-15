@@ -10,6 +10,7 @@ export default class Main extends Component {
     this.state = {
       data: '',
       location: '',
+      weatherData: '',
       display: false,
     };
   }
@@ -22,14 +23,16 @@ export default class Main extends Component {
   };
 
   getLocation = async (e) => {
-    console.log('Ho');
     e.preventDefault();
+    console.log(this.state.location);
     const reqData = await axios.get(
       `https://us1.locationiq.com/v1/search.php?key=pk.917c9eb60dbcf09cef8b2b16db9e9931&city=${this.state.location}&format=json`
     );
+    const myApiRes = await axios.get(`${process.env.REACT_APP_URL}/weather`);
 
     this.setState({
       data: reqData.data[0],
+      weatherData: myApiRes.data.data,
       display: true,
     });
   };
@@ -65,6 +68,9 @@ export default class Main extends Component {
                   alt=''
                 />
               </div>
+              {this.state.weatherData.map((value) => {
+                return <p>{value.weather.description}</p>;
+              })}
             </div>
           )}
         </div>
