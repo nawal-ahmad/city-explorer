@@ -8,7 +8,7 @@ import Container from 'react-bootstrap/Container';
 import Card from 'react-bootstrap/Card';
 import ListGroup from 'react-bootstrap/ListGroup';
 import ListGroupItem from 'react-bootstrap/ListGroupItem';
-// import Weather from './Weather';
+import Weather from './Weather';
 
 export default class Main extends Component {
   constructor(state) {
@@ -41,7 +41,7 @@ export default class Main extends Component {
 
       this.setState({
         data: reqData.data[0],
-        // weatherData: myApiRes.data,
+        weatherData: myApiRes.data,
         display: true,
         alert: false,
       });
@@ -101,8 +101,7 @@ export default class Main extends Component {
               This is a {this.state.alert}, Please enter a country name
             </Alert>
           )}
-          {/* {this.state.display && <this.state.weatherData Weather />} */}
-          {/* {<Weather />} */}
+          {this.state.display && <Weather weather={this.state.weatherData} />}
         </div>
       </main>
     );
