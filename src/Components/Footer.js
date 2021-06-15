@@ -5,7 +5,7 @@ export default class Footer extends Component {
     return (
       <div>
         <footer>
-          <p>Authorized: Nawal Ahmad</p>
+          <p style={{ textAlign: 'center' }}>Authorized: Nawal Ahmad</p>
         </footer>
       </div>
     );
