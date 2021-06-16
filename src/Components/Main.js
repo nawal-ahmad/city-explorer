@@ -9,6 +9,7 @@ import Card from 'react-bootstrap/Card';
 import ListGroup from 'react-bootstrap/ListGroup';
 import ListGroupItem from 'react-bootstrap/ListGroupItem';
 import Weather from './Weather';
+// import Movies from './Movies';
 
 export default class Main extends Component {
   constructor(state) {
@@ -20,6 +21,7 @@ export default class Main extends Component {
       display: false,
       alert: '',
       error: false,
+      // moviesData : '',
     };
   }
 
@@ -52,6 +54,17 @@ export default class Main extends Component {
       });
     }
   };
+
+  // getMovies = async () =>{
+  //   const apiData = await axios.get(${process.env.REACT_APP_API}/movies?query=${this.state.locationName});
+  //   console.log(apiData);
+  //   this.setState({
+  //     moviesData : apiData,
+  //     display : true,
+  //     error : false,
+  //   });
+  // }
+
   render() {
     return (
       <main>
@@ -102,6 +115,12 @@ export default class Main extends Component {
             </Alert>
           )}
           {this.state.display && <Weather weather={this.state.weatherData} />}
+          {/* {this.state.moviesData&&
+        <Movies
+          apiData={this.state.moviesData.data}
+          name={this.state.data.display_name}
+        />
+        } */}
         </div>
       </main>
     );
