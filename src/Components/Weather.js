@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
-import { ListGroup } from 'react-bootstrap';
+import { Container, ListGroup } from 'react-bootstrap';
 
 export default class Weather extends Component {
   render() {
     return (
       <div>
-        {this.props.weather.map((weatherObj) => {
+        {this.props.weatherData.map((weatherObj) => {
           return (
-            <div>
+            <Container>
               <ListGroup
                 style={{ width: '50rem', margin: 'Auto', textAlign: 'center' }}
               >
@@ -18,7 +18,7 @@ export default class Weather extends Component {
               >
                 {weatherObj.date}
               </ListGroup>
-            </div>
+            </Container>
           );
         })}
       </div>
